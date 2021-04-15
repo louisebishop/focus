@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-  @AppStorage("isOnboarding") var isOnboarding = false
-//  @EnvironmentObject var nav: OnboardingController
-  let viewModel = TimerViewModel()
   
   var body: some View {
     

@@ -7,12 +7,22 @@
 
 import SwiftUI
 
-class TimerViewModel: ObservableObject {
+enum TimerType {
+  case focusTimer
+  case breakTimer
+}
+
+enum TimerActivity {
+  case timerActive
+  case timerInactive
+}
+
+class FocusSession: ObservableObject {
   
-  // Timer setup
+  // Session properties
   @Published var focusTaskName: String = ""
   @Published var sessionDurationIndex: Int = 0
-  @Published var numberOfSessionsIndex: Double = 0.0
+  @Published var numberOfSessions: Int = 0
   @Published var breakDurationIndex: Int = 0
   @Published var breakFrequencyIndex: Int = 0
   @Published var colorSelection: String = ""
@@ -21,9 +31,12 @@ class TimerViewModel: ObservableObject {
   let breakDurations = [2, 3, 4, 5, 6, 7, 8, 9, 10]
   let longBreakFrequencies = [3, 4, 5, 6]
   
-  func setTitle(title: String) {
-    self.focusTaskName = title
-  }
+  //Start a session
+  //Stop a session
+  
+  //Start the timer
+  //Pause the timer
+  //Stop the timer
   
 }
 

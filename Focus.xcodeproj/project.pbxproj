@@ -27,7 +27,7 @@
 		FAB8E26D260BDF0700AF5C45 /* Archivo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAB8E26C260BDF0700AF5C45 /* Archivo-Regular.ttf */; };
 		FAFC0121261D228600067C5A /* ColorSwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFC0120261D228600067C5A /* ColorSwatchView.swift */; };
 		FAFC012F261D92F500067C5A /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFC012E261D92F500067C5A /* TimerView.swift */; };
-		FAFC0134261D93D200067C5A /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFC0133261D93D200067C5A /* TimerViewModel.swift */; };
+		FAFC0134261D93D200067C5A /* FocusSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFC0133261D93D200067C5A /* FocusSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +74,7 @@
 		FAB8E26C260BDF0700AF5C45 /* Archivo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Archivo-Regular.ttf"; sourceTree = "<group>"; };
 		FAFC0120261D228600067C5A /* ColorSwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatchView.swift; sourceTree = "<group>"; };
 		FAFC012E261D92F500067C5A /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		FAFC0133261D93D200067C5A /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		FAFC0133261D93D200067C5A /* FocusSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +127,7 @@
 			children = (
 				FA89D346260E527F00E3991A /* App */,
 				FA89D34A260E52A900E3991A /* View */,
+				FA3EE5BF2628B5C1009B1AFC /* Model */,
 				FA89D34B260E52BA00E3991A /* Data */,
 				FAB8E271260BDF0D00AF5C45 /* Fonts */,
 				FA70A921260BAEC700249A24 /* Resources */,
@@ -174,6 +175,13 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		FA3EE5BF2628B5C1009B1AFC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FA70A921260BAEC700249A24 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,7 +216,7 @@
 		FA89D34B260E52BA00E3991A /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				FAFC0133261D93D200067C5A /* TimerViewModel.swift */,
+				FAFC0133261D93D200067C5A /* FocusSession.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -359,7 +367,7 @@
 				FAFC012F261D92F500067C5A /* TimerView.swift in Sources */,
 				FA1FE27B25DC164C009D7A15 /* ContentView.swift in Sources */,
 				FA70A926260BB20000249A24 /* OnboardingStepView.swift in Sources */,
-				FAFC0134261D93D200067C5A /* TimerViewModel.swift in Sources */,
+				FAFC0134261D93D200067C5A /* FocusSession.swift in Sources */,
 				FAFC0121261D228600067C5A /* ColorSwatchView.swift in Sources */,
 				FA1FE27925DC164C009D7A15 /* FocusApp.swift in Sources */,
 				FAB8E263260BD9F400AF5C45 /* OnboardingView.swift in Sources */,

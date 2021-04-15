@@ -13,15 +13,8 @@ import SwiftUI
 
 struct TimerView: View {
   
-  @ObservedObject var viewModel: TimerViewModel
-//  @Binding var focusTaskName: String
-  // Bunch of timer related bindings from the view model that this view needs to set itself up
-//  @Binding var focusTaskName: String
-//  @Binding var sessionDuration: Int
+  @ObservedObject var focusSession: FocusSession
   @Binding var numberOfSessions: Double
-//  @Binding var breakDuration: Int
-//  @Binding var breakFrequency: Int
-//  @Binding var colorSelection: String
   
     var body: some View {
       VStack {
@@ -33,14 +26,14 @@ struct TimerView: View {
             .modifier(BodyText())
         }
         
-        Text("Session 1 of \(Int(viewModel.numberOfSessionsIndex))")
+        Text("Session 1 of \(Int(numberOfSessions))")
           .modifier(BodyText())
           .padding()
-        Text("\(viewModel.focusTaskName)")
+        Text("\(focusSession.focusTaskName)")
           .modifier(MediumTitle())
         
         Spacer()
-        Text("\(Double(viewModel.sessionDurations[viewModel.sessionDurationIndex]), specifier: "%.2f")")
+        Text("\(Double(focusSession.sessionDurations[focusSession.sessionDurationIndex]), specifier: "%.2f")")
           .modifier(TimerText())
         
         Spacer()

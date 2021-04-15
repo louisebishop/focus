@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-  // MARK: - Private Properties
   @AppStorage("isOnboarding") var isOnboarding: Bool = true
-//  @EnvironmentObject var nav: OnboardingController
   @State private var onboardingTabSelection = 0
   var data = OnboardingDataModel.data
   
@@ -19,7 +17,6 @@ struct OnboardingView: View {
     UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.tomatoRed).withAlphaComponent(0.3)
   }
   
-  // MARK: - Body
   var body: some View {
         ZStack(alignment: .bottom) {
           TabView(selection: $onboardingTabSelection) {
@@ -37,7 +34,6 @@ struct OnboardingView: View {
           
           HStack {
             Button("Skip") {
-//              nav.currentPage = .home
               isOnboarding = false
             }.foregroundColor(.focusBlack)
             Spacer()
@@ -49,7 +45,6 @@ struct OnboardingView: View {
                   print(onboardingTabSelection)
                   print(data.count)
                 } else {
-//                  nav.currentPage = .home
                   isOnboarding = false
                 }
               }
