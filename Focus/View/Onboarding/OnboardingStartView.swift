@@ -14,6 +14,7 @@ struct OnboardingStartView: View {
     switch nav.currentPage {
     case .onboarding:
       OnboardingView()
+        .transition(.move(edge: .trailing))
     case .home:
       ContentView()
         .transition(.move(edge: .trailing))
