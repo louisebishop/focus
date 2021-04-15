@@ -7,23 +7,21 @@
 
 import SwiftUI
 
-struct OnboardingStartView: View {
-  @EnvironmentObject var nav: OnboardingController
+struct OnboardingNavigationView: View {
+  @AppStorage("isOnboarding") var isOnboarding: Bool = true
   
   var body: some View {
-    switch nav.currentPage {
-    case .onboarding:
+    
+    if isOnboarding {
       OnboardingView()
-        .transition(.move(edge: .trailing))
-    case .home:
+    } else {
       ContentView()
-        .transition(.move(edge: .trailing))
     }
   }
   
 }
 struct OnboardingStartView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingStartView()
+        OnboardingNavigationView()
     }
 }

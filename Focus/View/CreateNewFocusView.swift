@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CreateNewFocusView: View {
 
-  @EnvironmentObject var nav: OnboardingController
+//  @EnvironmentObject var nav: OnboardingController
   @StateObject var viewModel = TimerViewModel()
   
 //  @State var focusTaskName = ""

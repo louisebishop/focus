@@ -9,7 +9,9 @@ import SwiftUI
 
 struct OnboardingView: View {
   // MARK: - Private Properties
-  @EnvironmentObject var nav: OnboardingController
+  @AppStorage("isOnboarding") var isOnboarding: Bool = true
+//  @EnvironmentObject var nav: OnboardingController
+  @State private var onboardingTabSelection = 0
   var data = OnboardingDataModel.data
   
   init() {
@@ -20,7 +22,7 @@ struct OnboardingView: View {
   // MARK: - Body
   var body: some View {
         ZStack(alignment: .bottom) {
-          TabView(selection: self.$nav.onboardingTabSelection) {
+          TabView(selection: $onboardingTabSelection) {
             ForEach(0..<data.count, id: \.self) { index in
               OnboardingStepView(data: data[index])
                 .tag(index)
@@ -35,18 +37,20 @@ struct OnboardingView: View {
           
           HStack {
             Button("Skip") {
-              nav.currentPage = .home
+//              nav.currentPage = .home
+              isOnboarding = false
             }.foregroundColor(.focusBlack)
             Spacer()
               
             Button(action: {
               withAnimation() {
-                if nav.onboardingTabSelection < 2 {
-                  nav.onboardingTabSelection += 1
-                  print(nav.onboardingTabSelection)
+                if onboardingTabSelection < 2 {
+                  onboardingTabSelection += 1
+                  print(onboardingTabSelection)
                   print(data.count)
                 } else {
-                  nav.currentPage = .home
+//                  nav.currentPage = .home
+                  isOnboarding = false
                 }
               }
             }, label: {
