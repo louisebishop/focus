@@ -11,12 +11,15 @@ struct CreateNewFocusView: View {
 
   @StateObject var focusSession = FocusSession()
   @State var numberOfSessionsIndex: Double = 4
+  @State private var presentView = false
 
     var body: some View {
         Form {
+          
           Section(header: Text("I will focus on...")) {
             TextField("", text: $focusSession.focusTaskName)
           }
+          
           Section(header: Text("I want to focus for...")) {
             Picker(selection: $focusSession.sessionDurationIndex, label: Text("")) {
               ForEach(0 ..< focusSession.sessionDurations.count) { index in
@@ -56,10 +59,15 @@ struct CreateNewFocusView: View {
           Section(header: Text("Color scheme")) {
             ColorSwatchView(selection: $focusSession.colorSelection)
           }
-          NavigationLink(destination: TimerView(focusSession: focusSession, numberOfSessions: $numberOfSessionsIndex)) {
-            FilledButton(title: "Start my focus")
-          }
         }
+      NavigationLink(destination: FocusSessionView(focusSession: focusSession, numberOfSessions: $numberOfSessionsIndex), isActive: $presentView) {
+        Button(action: {
+          focusSession.startSession()
+          presentView = true
+        }) {
+          Text("Start Session")
+        }.buttonStyle(FilledFormButtonStyle())
+      }.padding(20)
         .modifier(BodyText())
         .navigationBarTitle(Text("Create new focus"))
         .navigationBarBackButtonHidden(true)

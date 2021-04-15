@@ -24,7 +24,7 @@ struct ContentView: View {
         Spacer()
         Spacer()
         NavigationLink(destination: CreateNewFocusView()) {
-          FilledButton(title: "Create a new focus")
+          FilledButton(title: "Create a new focus", action: ())
         }
         .padding(.horizontal, 20)
         Spacer()

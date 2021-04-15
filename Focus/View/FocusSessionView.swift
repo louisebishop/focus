@@ -11,10 +11,11 @@ import SwiftUI
 //    @State var timeRemaining = 200
 //    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
-struct TimerView: View {
+struct FocusSessionView: View {
   
   @ObservedObject var focusSession: FocusSession
   @Binding var numberOfSessions: Double
+//  @State private var showPausedState : Bool
   
     var body: some View {
       VStack {
@@ -33,16 +34,37 @@ struct TimerView: View {
           .modifier(MediumTitle())
         
         Spacer()
-        Text("\(Double(focusSession.sessionDurations[focusSession.sessionDurationIndex]), specifier: "%.2f")")
+          Text("\(focusSession.getSecondsToDuration())")
+//        Text(focusSession.timerActive ? "\(focusSession.timerDuration)" : "\(focusSession.getSecondsToDuration())")
           .modifier(TimerText())
         
         Spacer()
         UnfilledButton(title: "I got distracted")
-        FilledButton(title: "Start")
-      }
+//        FilledButton(title: "Pause", action: focusSession.pauseTimer())
+        
+          Button(action: {
+            focusSession.pauseTimer()
+          }) {
+            Text("Sneaky")
+          }
+          .buttonStyle(FilledFormButtonStyle())
+          .opacity(focusSession.timerActive ? 0 : 1)
+          
+          Button(action: {
+            focusSession.pauseTimer()
+          }) {
+            Text("Even Sneakier")
+          }.buttonStyle(FilledFormButtonStyle())
+          
+          Button(action: {
+            focusSession.pauseTimer()
+          }) {
+            Text("Pause")
+          }.buttonStyle(FilledFormButtonStyle())
       .padding()
       .navigationBarBackButtonHidden(true)
       .navigationBarHidden(true)
+    }
     }
 }
 

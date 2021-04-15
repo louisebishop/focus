@@ -17,6 +17,7 @@
 		FA35A075260E56EF00025F14 /* CreateNewFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35A074260E56EF00025F14 /* CreateNewFocusView.swift */; };
 		FA35A07E260E5B7900025F14 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35A07D260E5B7900025F14 /* Fonts.swift */; };
 		FA35A086260E62D400025F14 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35A085260E62D400025F14 /* Buttons.swift */; };
+		FA3EE5CA26290106009B1AFC /* TestAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EE5C926290105009B1AFC /* TestAnimation.swift */; };
 		FA70A918260BA50100249A24 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA70A917260BA50100249A24 /* Colors.xcassets */; };
 		FA70A91D260BAEBE00249A24 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA70A91C260BAEBE00249A24 /* Colors.swift */; };
 		FA70A926260BB20000249A24 /* OnboardingStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA70A925260BB20000249A24 /* OnboardingStepView.swift */; };
@@ -26,7 +27,7 @@
 		FAB8E268260BDEFA00AF5C45 /* Archivo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAB8E267260BDEFA00AF5C45 /* Archivo-SemiBold.ttf */; };
 		FAB8E26D260BDF0700AF5C45 /* Archivo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAB8E26C260BDF0700AF5C45 /* Archivo-Regular.ttf */; };
 		FAFC0121261D228600067C5A /* ColorSwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFC0120261D228600067C5A /* ColorSwatchView.swift */; };
-		FAFC012F261D92F500067C5A /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFC012E261D92F500067C5A /* TimerView.swift */; };
+		FAFC012F261D92F500067C5A /* FocusSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFC012E261D92F500067C5A /* FocusSessionView.swift */; };
 		FAFC0134261D93D200067C5A /* FocusSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFC0133261D93D200067C5A /* FocusSession.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		FA35A074260E56EF00025F14 /* CreateNewFocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewFocusView.swift; sourceTree = "<group>"; };
 		FA35A07D260E5B7900025F14 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		FA35A085260E62D400025F14 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		FA3EE5C926290105009B1AFC /* TestAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAnimation.swift; sourceTree = "<group>"; };
 		FA70A917260BA50100249A24 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		FA70A91C260BAEBE00249A24 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FA70A925260BB20000249A24 /* OnboardingStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepView.swift; sourceTree = "<group>"; };
@@ -73,7 +75,7 @@
 		FAB8E267260BDEFA00AF5C45 /* Archivo-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Archivo-SemiBold.ttf"; sourceTree = "<group>"; };
 		FAB8E26C260BDF0700AF5C45 /* Archivo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Archivo-Regular.ttf"; sourceTree = "<group>"; };
 		FAFC0120261D228600067C5A /* ColorSwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatchView.swift; sourceTree = "<group>"; };
-		FAFC012E261D92F500067C5A /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		FAFC012E261D92F500067C5A /* FocusSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSessionView.swift; sourceTree = "<group>"; };
 		FAFC0133261D93D200067C5A /* FocusSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,7 +210,8 @@
 				FA1FE27A25DC164C009D7A15 /* ContentView.swift */,
 				FA35A074260E56EF00025F14 /* CreateNewFocusView.swift */,
 				FAFC0120261D228600067C5A /* ColorSwatchView.swift */,
-				FAFC012E261D92F500067C5A /* TimerView.swift */,
+				FAFC012E261D92F500067C5A /* FocusSessionView.swift */,
+				FA3EE5C926290105009B1AFC /* TestAnimation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -364,7 +367,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAFC012F261D92F500067C5A /* TimerView.swift in Sources */,
+				FA3EE5CA26290106009B1AFC /* TestAnimation.swift in Sources */,
+				FAFC012F261D92F500067C5A /* FocusSessionView.swift in Sources */,
 				FA1FE27B25DC164C009D7A15 /* ContentView.swift in Sources */,
 				FA70A926260BB20000249A24 /* OnboardingStepView.swift in Sources */,
 				FAFC0134261D93D200067C5A /* FocusSession.swift in Sources */,
