@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+  @EnvironmentObject var navigationHelper: NavigationHelper
   
   var body: some View {
     
@@ -23,8 +24,8 @@ struct ContentView: View {
           .padding(.top, 3)
         Spacer()
         Spacer()
-        NavigationLink(destination: CreateNewFocusView()) {
-          FilledButton(title: "Create a new focus", action: ())
+        NavigationLink(destination: CreateNewFocusView(), tag: "Create", selection: $navigationHelper.selection) {
+          FilledButton(title: "Create a new focus", action: (), background: Color.focusBlack)
         }
         .padding(.horizontal, 20)
         Spacer()

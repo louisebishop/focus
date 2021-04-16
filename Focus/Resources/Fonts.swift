@@ -27,7 +27,7 @@ struct MediumTitle: ViewModifier {
 struct BodyText: ViewModifier {
   func body(content: Content) -> some View {
     content
-      .font(.custom("Archivo-SemiBold", size: 18, relativeTo: .body))
+      .font(.custom("Archivo-Regular", size: 18, relativeTo: .body))
       .foregroundColor(.focusBlack)
   }
 }

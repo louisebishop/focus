@@ -13,58 +13,49 @@ import SwiftUI
 
 struct FocusSessionView: View {
   
+  @EnvironmentObject var navigationHelper: NavigationHelper
   @ObservedObject var focusSession: FocusSession
   @Binding var numberOfSessions: Double
-//  @State private var showPausedState : Bool
+  @State private var showPausedState = false
   
     var body: some View {
       VStack {
-        HStack {
-          Image("smallTomato")
-            .resizable()
-            .frame(width: 25, height: 25, alignment: .center)
-          Text("Focus")
-            .modifier(BodyText())
-        }
+        
+        FocusTitleView()
         
         Text("Session 1 of \(Int(numberOfSessions))")
           .modifier(BodyText())
           .padding()
+        
         Text("\(focusSession.focusTaskName)")
           .modifier(MediumTitle())
         
         Spacer()
-          Text("\(focusSession.getSecondsToDuration())")
-//        Text(focusSession.timerActive ? "\(focusSession.timerDuration)" : "\(focusSession.getSecondsToDuration())")
+        
+        Text("\(focusSession.getSecondsToDuration())")
           .modifier(TimerText())
         
         Spacer()
-        UnfilledButton(title: "I got distracted")
-//        FilledButton(title: "Pause", action: focusSession.pauseTimer())
         
-          Button(action: {
-            focusSession.pauseTimer()
-          }) {
-            Text("Sneaky")
-          }
-          .buttonStyle(FilledFormButtonStyle())
-          .opacity(focusSession.timerActive ? 0 : 1)
+        VStack {
+          Button(action: { focusSession.distractionCounted() }) {
+            Text("I got distracted")
+          }.buttonStyle(UnfilledButtonStyle())
           
           Button(action: {
             focusSession.pauseTimer()
-          }) {
-            Text("Even Sneakier")
-          }.buttonStyle(FilledFormButtonStyle())
-          
-          Button(action: {
-            focusSession.pauseTimer()
+            showPausedState = true
           }) {
             Text("Pause")
-          }.buttonStyle(FilledFormButtonStyle())
+          }.buttonStyle(FilledButtonStyle(background: .focusBlack))
+        }
+      }.statusBar(hidden: true)
       .padding()
+      .background(showPausedState ? Color.lightGrey : Color.focusWhite)
+      .modifier(PausedModifier(focusSession: focusSession, showPausedState: $showPausedState))
       .navigationBarBackButtonHidden(true)
       .navigationBarHidden(true)
-    }
+      
     }
 }
 
@@ -73,3 +64,5 @@ struct FocusSessionView: View {
 //      TimerView(focusTaskName: "")
 //    }
 //}
+
+

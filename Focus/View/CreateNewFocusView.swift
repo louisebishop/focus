@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CreateNewFocusView: View {
 
+  @EnvironmentObject var navigationHelper: NavigationHelper
   @StateObject var focusSession = FocusSession()
   @State var numberOfSessionsIndex: Double = 4
   @State private var presentView = false
@@ -16,11 +17,11 @@ struct CreateNewFocusView: View {
     var body: some View {
         Form {
           
-          Section(header: Text("I will focus on...")) {
+          Section(header: Text("Today, I will complete...")) {
             TextField("", text: $focusSession.focusTaskName)
           }
           
-          Section(header: Text("I want to focus for...")) {
+          Section(header: Text("I will spend ___ minutes")) {
             Picker(selection: $focusSession.sessionDurationIndex, label: Text("")) {
               ForEach(0 ..< focusSession.sessionDurations.count) { index in
                 Text("\(focusSession.sessionDurations[index]) mins")
@@ -28,7 +29,7 @@ struct CreateNewFocusView: View {
             }
           }
           
-          Section(header: Text("Over..")) {
+          Section(header: Text("No. of sessions")) {
             VStack(alignment: .leading){
               Text("\(Int(numberOfSessionsIndex)) sessions")
                 .padding(.vertical)
@@ -38,7 +39,7 @@ struct CreateNewFocusView: View {
             }
           }
           
-          Section(header: Text("I will break for...")) {
+          Section(header: Text("I will break for ___ minutes")) {
             Picker(selection: $focusSession.breakDurationIndex, label: Text("")) {
               ForEach(0 ..< focusSession.breakDurations.count) {
                 Text("\(focusSession.breakDurations[$0]) mins")
@@ -46,7 +47,7 @@ struct CreateNewFocusView: View {
             }
           }
           
-          Section(header: Text("I need a long break (15 mins)...")) {
+          Section(header: Text("I need a longer break (15 mins)...")) {
             Picker(selection: $focusSession.breakFrequencyIndex, label: Text("")) {
               ForEach(0 ..< focusSession.longBreakFrequencies.count) {
                 Text("Every \(focusSession.longBreakFrequencies[$0]) sessions")
@@ -54,7 +55,6 @@ struct CreateNewFocusView: View {
             }
             .pickerStyle(WheelPickerStyle())
           }
-
         
           Section(header: Text("Color scheme")) {
             ColorSwatchView(selection: $focusSession.colorSelection)
@@ -66,7 +66,7 @@ struct CreateNewFocusView: View {
           presentView = true
         }) {
           Text("Start Session")
-        }.buttonStyle(FilledFormButtonStyle())
+        }.buttonStyle(FilledButtonStyle(background: .focusBlack))
       }.padding(20)
         .modifier(BodyText())
         .navigationBarTitle(Text("Create new focus"))

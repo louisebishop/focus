@@ -10,12 +10,13 @@ import SwiftUI
 struct OnboardingNavigationView: View {
   @AppStorage("isOnboarding") var isOnboarding: Bool = true
   
+  
   var body: some View {
     
     if isOnboarding {
       OnboardingView()
     } else {
-      ContentView()
+      ContentView().environmentObject(NavigationHelper())
     }
   }
   

@@ -26,8 +26,7 @@ class FocusSession: ObservableObject {
   var timer = Timer()
   @Published var timerActive = false
   @Published var timerDuration = 0
-  @Published var timerType: TimerType = .focusTimer
-  
+  @Published var focusTime = false
   
   let sessionDurations = [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
   let breakDurations = [2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -51,7 +50,7 @@ class FocusSession: ObservableObject {
     print("crumbs")
   }
   
-  //Set focus session timer
+  //Set focus session timer or reset it
   func setSessionTimer() {
     let sessionDuration = sessionDurations[sessionDurationIndex] * 60
       timerDuration = sessionDuration
@@ -88,9 +87,7 @@ class FocusSession: ObservableObject {
   }
   
   //Pause the timer
-  
   func pauseTimer() {
-    print("timer paused")
     timerActive = false
     timer.invalidate()
   }
@@ -107,6 +104,9 @@ class FocusSession: ObservableObject {
     
   }
   
+  
+  // when a focus timer ends
+  //
 }
 
 

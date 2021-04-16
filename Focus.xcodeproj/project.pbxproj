@@ -17,7 +17,10 @@
 		FA35A075260E56EF00025F14 /* CreateNewFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35A074260E56EF00025F14 /* CreateNewFocusView.swift */; };
 		FA35A07E260E5B7900025F14 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35A07D260E5B7900025F14 /* Fonts.swift */; };
 		FA35A086260E62D400025F14 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35A085260E62D400025F14 /* Buttons.swift */; };
-		FA3EE5CA26290106009B1AFC /* TestAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EE5C926290105009B1AFC /* TestAnimation.swift */; };
+		FA3EE5CA26290106009B1AFC /* FocusSessionPausedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EE5C926290105009B1AFC /* FocusSessionPausedView.swift */; };
+		FA3EE5DB26291A64009B1AFC /* FocusSessionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EE5DA26291A63009B1AFC /* FocusSessionSummaryView.swift */; };
+		FA3EE5E626291B85009B1AFC /* FocusTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EE5E526291B85009B1AFC /* FocusTitleView.swift */; };
+		FA3EE5EB26292204009B1AFC /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EE5EA26292204009B1AFC /* NavigationHelper.swift */; };
 		FA70A918260BA50100249A24 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA70A917260BA50100249A24 /* Colors.xcassets */; };
 		FA70A91D260BAEBE00249A24 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA70A91C260BAEBE00249A24 /* Colors.swift */; };
 		FA70A926260BB20000249A24 /* OnboardingStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA70A925260BB20000249A24 /* OnboardingStepView.swift */; };
@@ -65,7 +68,10 @@
 		FA35A074260E56EF00025F14 /* CreateNewFocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewFocusView.swift; sourceTree = "<group>"; };
 		FA35A07D260E5B7900025F14 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		FA35A085260E62D400025F14 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
-		FA3EE5C926290105009B1AFC /* TestAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAnimation.swift; sourceTree = "<group>"; };
+		FA3EE5C926290105009B1AFC /* FocusSessionPausedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSessionPausedView.swift; sourceTree = "<group>"; };
+		FA3EE5DA26291A63009B1AFC /* FocusSessionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSessionSummaryView.swift; sourceTree = "<group>"; };
+		FA3EE5E526291B85009B1AFC /* FocusTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTitleView.swift; sourceTree = "<group>"; };
+		FA3EE5EA26292204009B1AFC /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		FA70A917260BA50100249A24 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		FA70A91C260BAEBE00249A24 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FA70A925260BB20000249A24 /* OnboardingStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepView.swift; sourceTree = "<group>"; };
@@ -191,6 +197,7 @@
 				FA35A07D260E5B7900025F14 /* Fonts.swift */,
 				FA1FE27C25DC164E009D7A15 /* Assets.xcassets */,
 				FA35A085260E62D400025F14 /* Buttons.swift */,
+				FA3EE5EA26292204009B1AFC /* NavigationHelper.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -211,7 +218,9 @@
 				FA35A074260E56EF00025F14 /* CreateNewFocusView.swift */,
 				FAFC0120261D228600067C5A /* ColorSwatchView.swift */,
 				FAFC012E261D92F500067C5A /* FocusSessionView.swift */,
-				FA3EE5C926290105009B1AFC /* TestAnimation.swift */,
+				FA3EE5DA26291A63009B1AFC /* FocusSessionSummaryView.swift */,
+				FA3EE5C926290105009B1AFC /* FocusSessionPausedView.swift */,
+				FA3EE5E526291B85009B1AFC /* FocusTitleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -367,17 +376,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA3EE5CA26290106009B1AFC /* TestAnimation.swift in Sources */,
+				FA3EE5CA26290106009B1AFC /* FocusSessionPausedView.swift in Sources */,
 				FAFC012F261D92F500067C5A /* FocusSessionView.swift in Sources */,
 				FA1FE27B25DC164C009D7A15 /* ContentView.swift in Sources */,
 				FA70A926260BB20000249A24 /* OnboardingStepView.swift in Sources */,
 				FAFC0134261D93D200067C5A /* FocusSession.swift in Sources */,
+				FA3EE5DB26291A64009B1AFC /* FocusSessionSummaryView.swift in Sources */,
 				FAFC0121261D228600067C5A /* ColorSwatchView.swift in Sources */,
 				FA1FE27925DC164C009D7A15 /* FocusApp.swift in Sources */,
 				FAB8E263260BD9F400AF5C45 /* OnboardingView.swift in Sources */,
 				FA35A086260E62D400025F14 /* Buttons.swift in Sources */,
 				FA336CD4261C8C5F009FCD7A /* OnboardingNavigationView.swift in Sources */,
 				FA70A92B260BB25C00249A24 /* OnboardingDataModel.swift in Sources */,
+				FA3EE5E626291B85009B1AFC /* FocusTitleView.swift in Sources */,
+				FA3EE5EB26292204009B1AFC /* NavigationHelper.swift in Sources */,
 				FA35A07E260E5B7900025F14 /* Fonts.swift in Sources */,
 				FA35A075260E56EF00025F14 /* CreateNewFocusView.swift in Sources */,
 				FA70A91D260BAEBE00249A24 /* Colors.swift in Sources */,
