@@ -10,19 +10,18 @@ import SwiftUI
 struct FocusSessionPausedView: View {
   @EnvironmentObject var navigationHelper: NavigationHelper
   @ObservedObject var focusSession: FocusSession
-  @Binding var showPausedState: Bool
   @State private var presentView = false
   
   var body: some View {
     VStack {
       Button(action: {
         focusSession.startTimer()
-        showPausedState = false
+        focusSession.showPausedState = false
       }) { Text("Resume Focus") }.buttonStyle(FilledButtonStyle(background: .focusBlack))
     
     Button(action: {
-      focusSession.setSessionTimer()
-      showPausedState = false
+      focusSession.setFocusTimer()
+      focusSession.showPausedState = false
     }) { Text("Reset Timer") }.buttonStyle(FilledButtonStyle(background: .focusBlack))
     
       NavigationLink(destination: FocusSessionSummaryView(), isActive: $presentView) {
@@ -32,31 +31,30 @@ struct FocusSessionPausedView: View {
           Text("End Session")
         }.buttonStyle(FilledButtonStyle(background: .cherryRed))
       }
-    }
+    }.padding(.bottom, 20)
   }
 }
 
 struct PausedModifier: ViewModifier {
   @ObservedObject var focusSession: FocusSession
-  @Binding var showPausedState: Bool
   
   func body(content: Content) -> some View {
     // overlay the following
     content.overlay(
       VStack {               // << holder container !!
         // if timer is paused
-        if showPausedState {
+        if focusSession.showPausedState {
           // create a vstack
           VStack {
             // then a hstack
             Spacer()
-            FocusSessionPausedView(focusSession: focusSession, showPausedState: $showPausedState)
+            FocusSessionPausedView(focusSession: focusSession)
           }
           .padding()
           .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
           .onTapGesture {
             withAnimation {
-              showPausedState = false
+              focusSession.showPausedState = false
             }
           }
 //          .gesture(

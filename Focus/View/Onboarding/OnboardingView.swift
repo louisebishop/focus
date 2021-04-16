@@ -54,7 +54,7 @@ struct OnboardingView: View {
             .foregroundColor(.focusBlack)
             
           }
-          .modifier(BodyText())
+          .modifier(BodyText(textColor: Color.focusBlack))
           .padding(.horizontal, 20)
           .padding(.bottom, 13)
         }

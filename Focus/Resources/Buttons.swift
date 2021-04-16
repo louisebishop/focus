@@ -39,6 +39,23 @@ struct UnfilledButtonStyle: ButtonStyle {
   }
 }
 
+struct InvertedUnfilledButtonStyle: ButtonStyle {
+  func makeBody(configuration: Self.Configuration) -> some View {
+    configuration.label
+      .foregroundColor(.focusWhite)
+      .frame(maxWidth: .infinity)
+      .padding()
+      .background(Color.focusBlack)
+      .cornerRadius(8)
+      .overlay(
+        RoundedRectangle(cornerRadius: 8)
+          .stroke(Color.focusWhite, lineWidth: 3)
+      )
+      .shadow(color: Color.shadowGrey, radius: 4, x: 0.0, y: 4)
+      .shadow(color: Color.shadowGrey, radius: 4, x: 0.0, y: 4)
+  }
+}
+
 struct FilledButton: View {
     let title: String
     let action: ()

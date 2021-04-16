@@ -19,30 +19,31 @@ struct FocusSessionSummaryView: View {
           .frame(height: 300)
         VStack {
           Spacer()
-          FocusTitleView()
+          FocusTitleView(textColor: Color.focusBlack)
             .frame(width:200, height:100)
           VStack(alignment: .leading) {
             Group {
               Text("Congrats on finishing up your Focus session!")
                 .fixedSize(horizontal: false, vertical: true)
-                .modifier(MediumTitle())
+                .modifier(MediumTitle(textColor: Color.focusBlack))
                 .padding(.vertical)
               
               Text("Amount of focused time")
-                .modifier(BodyText())
+                .modifier(BodyText(textColor: Color.focusBlack))
               Text("01:20:00")
-                .modifier(MediumTitle())
+                .modifier(MediumTitle(textColor: Color.focusBlack))
                 .padding(.bottom)
               
               Text("Amount of break time")
-                .modifier(BodyText())
+                .modifier(BodyText(textColor: Color.focusBlack))
               Text("00:15:00")
-                .modifier(MediumTitle())
+                .modifier(MediumTitle(textColor: Color.focusBlack))
                 .padding(.bottom)
               
-              Text("Times you got distracted")      .modifier(BodyText())
+              Text("Times you got distracted")
+                .modifier(BodyText(textColor: Color.focusBlack))
               Text("8")
-                .modifier(MediumTitle())
+                .modifier(MediumTitle(textColor: Color.focusBlack))
             }
             Spacer()
             Button(action: {
