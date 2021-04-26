@@ -14,23 +14,30 @@ struct ContentView: View {
     
     NavigationView {
       VStack {
-        Image("background-tomato")
-          .resizable()
-          .aspectRatio(contentMode: .fit)
+        GeometryReader { geo in
+          Image("background-tomato")
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: geo.size.width)
+        }
         Text("Focus")
           .modifier(LargeTitle(textColor: Color.focusBlack))
         Text("Do more mindfully")
           .modifier(BodyText(textColor: Color.focusBlack))
           .padding(.top, 3)
-        Spacer()
+          .padding(.bottom, 80)
         Spacer()
         NavigationLink(destination: CreateNewFocusView(), tag: "Create", selection: $navigationHelper.selection) {
+          
+//          Button(action: {}) {
+//            Text("Create a new focus")
+//          }.buttonStyle(FilledButtonStyle(background: .focusBlack, textColor: .focusWhite))
           FilledButton(title: "Create a new focus", action: (), background: Color.focusBlack)
         }
         .padding(.horizontal, 20)
         Spacer()
-        Spacer()
       }
+      .padding(.bottom, 40)
       .background(Color.onboardingBackgroundColor)
       .ignoresSafeArea()
     }

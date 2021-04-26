@@ -12,6 +12,7 @@ struct CreateNewFocusView: View {
   @EnvironmentObject var navigationHelper: NavigationHelper
   @StateObject var focusSession = FocusSession()
   @State private var presentView = false
+  @State private var backColour = Color.white
 
     var body: some View {
         Form {
@@ -58,6 +59,7 @@ struct CreateNewFocusView: View {
           Section(header: Text("Color scheme")) {
             ColorSwatchView(selection: $focusSession.colorSelection)
           }
+          
         }
       NavigationLink(destination: FocusSessionView(focusSession: focusSession), isActive: $presentView) {
         Button(action: {
@@ -65,7 +67,7 @@ struct CreateNewFocusView: View {
           presentView = true
         }) {
           Text("Start Session")
-        }.buttonStyle(FilledButtonStyle(background: .focusBlack))
+        }.buttonStyle(FilledButtonStyle(background: .focusBlack, textColor: Color.focusWhite))
       }.padding(20)
         .modifier(BodyText(textColor: Color.focusBlack))
         .navigationBarTitle(Text("Create new focus"))

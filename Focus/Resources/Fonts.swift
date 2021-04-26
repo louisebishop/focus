@@ -30,7 +30,16 @@ struct BodyText: ViewModifier {
   let textColor : Color
   func body(content: Content) -> some View {
     content
-      .font(.custom("Archivo-Regular", size: 18, relativeTo: .body))
+      .font(.custom("Archivo-SemiBold", size: 18, relativeTo: .body))
+      .foregroundColor(textColor)
+  }
+}
+
+struct TitleText: ViewModifier {
+  let textColor : Color
+  func body(content: Content) -> some View {
+    content
+      .font(.custom("Archivo-SemiBold", size: 25, relativeTo: .body))
       .foregroundColor(textColor)
   }
 }

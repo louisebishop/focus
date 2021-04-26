@@ -12,12 +12,12 @@ class FocusSession: ObservableObject {
   // Session properties
   @Published var focusTaskName: String = ""
   @Published var focusDurationIndex: Int = 0
-  var currentSession: Int = 1
   @Published var numberOfSessions: Double = 3
   @Published var numberOfBreaks: Int = 1
-  @Published var colorSelection: String = ""
+  @Published var colorSelection: String = "FocusWhite"
   @Published var sessionEnded: Bool = false
   @Published var showPausedState: Bool = false
+  var currentSession: Int = 1
   
   // Break properties
   @Published var breakDurationIndex: Int = 0
@@ -37,7 +37,15 @@ class FocusSession: ObservableObject {
   let breakDurations = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 //  let longBreakFrequencies = [3, 4, 5, 6]
   
-  var distractionTotal = 0
+  //Distractions
+  @Published var distractionTotal = 0
+  @Published var isDistracted = false
+  @Published var distractionButtonText = "I got distracted"
+  
+  //Count distraction
+  func distractionCounted() {
+    distractionTotal += 1
+  }
   
   //Start a session
   func startSession() {
@@ -46,30 +54,23 @@ class FocusSession: ObservableObject {
     setBreakTimer()
   }
   
-  //Count distraction
-  func distractionCounted() {
-    distractionTotal += 1
-  }
-  
-  //Set focus session timer or reset it
+  //Set focus session timer
   func setFocusTimer() {
     let focusDuration = focusDurations[focusDurationIndex] * 60
-      focusTimerDuration = focusDuration
-      startTimer()
+    focusTimerDuration = focusDuration
   }
   
   //Set break session timer
   func setBreakTimer() {
     numberOfBreaks = Int(numberOfSessions) - 1
     let breakDuration = breakDurations[breakDurationIndex] * 60
-      breakTimerDuration = breakDuration
+    breakTimerDuration = breakDuration
   }
   
   func startTimer() {
     
     timerActive = true
      if focusTime {
-      
       // Sets the timer variable with a new timer
       focusTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
         // For each second
@@ -96,20 +97,11 @@ class FocusSession: ObservableObject {
     return String(format:"%02i:%02i", minutes, seconds)
   }
   
-  // set background
-  
-  func setBackground() -> Color {
-    if focusTime {
-      return Color.focusWhite
-    } else {
-      return Color.focusBlack
-    }
-  }
-  
   //Pause the timer
   func pauseFocusTimer() {
     timerActive = false
     focusTimer.invalidate()
+    showPausedState = true
   }
   
   func pauseBreakTimer() {
@@ -122,11 +114,13 @@ class FocusSession: ObservableObject {
     timerActive = false
     focusTimer.invalidate()
     focusTimerDuration = 0
-    while currentSession < Int(numberOfSessions) {
+    if currentSession < Int(numberOfSessions) {
       print("increase focus session")
       currentSession += 1
       setBreakTimer()
       focusTime = false
+    } else {
+      sessionEnded = true
     }
   }
   
@@ -134,13 +128,12 @@ class FocusSession: ObservableObject {
     timerActive = false
     focusTimer.invalidate()
     breakTimerDuration = 0
-    while currentBreak < numberOfBreaks {
+    if currentBreak < numberOfBreaks {
       print("increase break session")
       currentBreak += 1
       setFocusTimer()
       focusTime = true
     }
-    sessionEnded = true
   }
   
   func skipBreak() {
@@ -149,7 +142,111 @@ class FocusSession: ObservableObject {
     setFocusTimer()
   }
   
+  // MARK: - Colour Scheme settings
+  
+  // Set background color
+  
+  func setFocusBackgroundColor() -> Color {
+    if showPausedState {
+      switch colorSelection {
+        case "FocusWhite": return Color.lightGrey
+        case "TomatoRed": return Color.tomatoRed.opacity(0.8)
+        case "TomatoHighlight": return Color.tomatoHighlight.opacity(0.8)
+        case "TomatoYellow": return Color.tomatoYellow.opacity(0.8)
+        default: return Color.focusBlack
+      }
+    } else if focusTime != true {
+      switch colorSelection {
+        case "FocusBlack": return Color.focusWhite
+        default: return Color.focusBlack
+      }
+    } else {
+      switch colorSelection {
+        case "FocusWhite": return Color.focusWhite
+        case "TomatoRed": return Color.tomatoRed
+        case "TomatoHighlight": return Color.tomatoHighlight
+        case "TomatoYellow": return Color.tomatoYellow
+        case "FocusBlack": return Color.focusBlack
+        default: return Color.focusWhite
+      }
+  }
+}
+  
+  // Set the icon image
+  
+  func setImage() -> String {
+    switch colorSelection {
+    case "TomatoYellow": return "light-tomato"
+    default: return "focused-tomato"
+    }
+  }
+  
+  // Set inverted colors
+  
+  func invertColors() -> Color {
+    if focusTime {
+      switch colorSelection {
+        case "FocusBlack" : return Color.focusWhite
+        default: return Color.focusBlack
+      }
+    } else {
+      switch colorSelection {
+      case "FocusBlack" : return Color.focusBlack
+      default: return Color.focusWhite
+      }
+    }
+  }
+  
+  // Set paused state button background color
+  
+  func setPausedStateButtonTextColor() -> Color {
+    
+    switch colorSelection {
+    case "FocusBlack": return Color.focusBlack
+    default: return Color.focusWhite
+    }
+  }
+  
+  // Set end session color
+  
+  func setEndSessionButtonColor() -> Color {
+    
+    switch colorSelection {
+    case "TomatoRed": return Color.focusWhite
+    default: return Color.cherryRed
+    }
+  }
+  
+  func setEndSessionButtonTextColor() -> Color {
+    
+    switch colorSelection {
+    case "TomatoRed": return Color.cherryRed.opacity(0.8)
+    default: return Color.focusWhite
+    }
+  }
+  
+  // Set paused state button background color
+  
+//  func setPausedStateButtonColor() -> Color {
+//
+//    switch colorSelection {
+//      case "FocusBlack": return Color.focusWhite
+//      default: return Color.focusBlack
+//    }
+//  }
+//
+  
+  // Set break button color
+  
+//  func setBreakButtonColor() -> Color {
+//    switch colorSelection {
+//      case "FocusWhite": return Color.focusWhite
+//      case "TomatoRed": return Color.tomatoRed
+//      case "TomatoHighlight": return Color.tomatoHighlight
+//      case "TomatoYellow": return Color.tomatoYellow
+//      default: return Color.focusBlack
+//    }
+//  }
   
 }
-
 

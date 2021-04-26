@@ -9,14 +9,17 @@ import SwiftUI
 
 struct FocusTitleView: View {
   let textColor : Color
+  let image : String
     var body: some View {
       HStack {
-        Image("smallTomato")
+        Image(image)
           .resizable()
-          .frame(width: 25, height: 25, alignment: .center)
+          .aspectRatio(contentMode: .fill)
+          .frame(width: 50, height: 50, alignment: .center)
+          .offset(x: 10)
         Text("Focus")
-          .modifier(BodyText(textColor: textColor))
-      }
+          .modifier(TitleText(textColor: textColor))
+      }.offset(x: -10)
     }
 }
 

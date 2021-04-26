@@ -19,8 +19,9 @@ struct FocusSessionSummaryView: View {
           .frame(height: 300)
         VStack {
           Spacer()
-          FocusTitleView(textColor: Color.focusBlack)
-            .frame(width:200, height:100)
+          FocusTitleView(textColor: Color.focusBlack, image: "focused-tomato")
+//            .frame(width:200, height:100)
+            .padding(.top, 40)
           VStack(alignment: .leading) {
             Group {
               Text("Congrats on finishing up your Focus session!")
@@ -50,7 +51,7 @@ struct FocusSessionSummaryView: View {
               navigationHelper.selection = nil
             }) {
               Text("Create a new focus")
-            }.buttonStyle(FilledButtonStyle(background: .focusBlack))
+            }.buttonStyle(FilledButtonStyle(background: .focusBlack, textColor: Color.focusWhite))
           }
           .padding(.horizontal)
           .padding(.vertical, 40)
@@ -70,37 +71,3 @@ struct FocusSessionSummaryView_Previews: PreviewProvider {
     FocusSessionSummaryView()
   }
 }
-
-//VStack {
-//
-//  VStack(alignment: .leading) {
-//
-//    Text("Congrats on finishing up your Focus session!").modifier(MediumTitle())
-//
-//    Text("Amount of focused time")
-//      .modifier(BodyText())
-//    Text("01:20:00")
-//      .modifier(MediumTitle())
-//
-//    Text("Amount of break time")
-//      .modifier(BodyText())
-//    Text("00:15:00")
-//      .modifier(MediumTitle())
-//
-//    Text("Times you got distracted")
-//      .modifier(BodyText())
-//    Text("8")
-//      .modifier(MediumTitle())
-//
-//    Button(action: {
-//      navigationHelper.selection = nil
-//    }) {
-//      Text("Create a new focus")
-//    }.buttonStyle(FilledButtonStyle(background: .focusBlack))
-//
-//  }.ignoresSafeArea()
-//.padding()
-//  .navigationBarTitle("")
-//  .navigationBarBackButtonHidden(true)
-//  .navigationBarHidden(true)
-//}
