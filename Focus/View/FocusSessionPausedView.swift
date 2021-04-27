@@ -24,7 +24,7 @@ struct FocusSessionPausedView: View {
       focusSession.showPausedState = false
     }) { Text("Reset Timer") }.buttonStyle(FilledButtonStyle(background: focusSession.invertColors(), textColor: focusSession.setPausedStateButtonTextColor()))
     
-      NavigationLink(destination: FocusSessionSummaryView(), isActive: $presentView) {
+      NavigationLink(destination: FocusSessionSummaryView(focusSession: focusSession), isActive: $presentView) {
         Button(action: {
           presentView = true
         }) {

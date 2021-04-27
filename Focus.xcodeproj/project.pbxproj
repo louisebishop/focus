@@ -13,6 +13,9 @@
 		FA1FE28025DC164E009D7A15 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA1FE27F25DC164E009D7A15 /* Preview Assets.xcassets */; };
 		FA1FE28B25DC164E009D7A15 /* FocusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1FE28A25DC164E009D7A15 /* FocusTests.swift */; };
 		FA1FE29625DC164E009D7A15 /* FocusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1FE29525DC164E009D7A15 /* FocusUITests.swift */; };
+		FA262A0B26381CA900849BF8 /* timer-done.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA262A0A26381CA800849BF8 /* timer-done.wav */; };
+		FA262A0C26381CA900849BF8 /* timer-done.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA262A0A26381CA800849BF8 /* timer-done.wav */; };
+		FA262A0D26381CA900849BF8 /* timer-done.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA262A0A26381CA800849BF8 /* timer-done.wav */; };
 		FA336CD4261C8C5F009FCD7A /* OnboardingNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA336CD3261C8C5F009FCD7A /* OnboardingNavigationView.swift */; };
 		FA35A075260E56EF00025F14 /* CreateNewFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35A074260E56EF00025F14 /* CreateNewFocusView.swift */; };
 		FA35A07E260E5B7900025F14 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35A07D260E5B7900025F14 /* Fonts.swift */; };
@@ -64,6 +67,7 @@
 		FA1FE29125DC164E009D7A15 /* FocusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FocusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1FE29525DC164E009D7A15 /* FocusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusUITests.swift; sourceTree = "<group>"; };
 		FA1FE29725DC164E009D7A15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA262A0A26381CA800849BF8 /* timer-done.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "timer-done.wav"; sourceTree = "<group>"; };
 		FA336CD3261C8C5F009FCD7A /* OnboardingNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNavigationView.swift; sourceTree = "<group>"; };
 		FA35A074260E56EF00025F14 /* CreateNewFocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewFocusView.swift; sourceTree = "<group>"; };
 		FA35A07D260E5B7900025F14 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 		FA70A921260BAEC700249A24 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA262A0A26381CA800849BF8 /* timer-done.wav */,
 				FA70A91C260BAEBE00249A24 /* Colors.swift */,
 				FA35A07D260E5B7900025F14 /* Fonts.swift */,
 				FA1FE27C25DC164E009D7A15 /* Assets.xcassets */,
@@ -347,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAB8E268260BDEFA00AF5C45 /* Archivo-SemiBold.ttf in Resources */,
+				FA262A0B26381CA900849BF8 /* timer-done.wav in Resources */,
 				FAB43F3A261DAC5F0016B34E /* ArchivoNarrow-Bold.ttf in Resources */,
 				FA70A918260BA50100249A24 /* Colors.xcassets in Resources */,
 				FA1FE28025DC164E009D7A15 /* Preview Assets.xcassets in Resources */,
@@ -359,6 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA262A0C26381CA900849BF8 /* timer-done.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA262A0D26381CA900849BF8 /* timer-done.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

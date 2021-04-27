@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FocusSessionSummaryView: View {
   @EnvironmentObject var navigationHelper: NavigationHelper
-  //  @ObservedObject var focusSession: FocusSession
+  @ObservedObject var focusSession: FocusSession
   
   var body: some View {
  
@@ -24,26 +24,26 @@ struct FocusSessionSummaryView: View {
             .padding(.top, 40)
           VStack(alignment: .leading) {
             Group {
-              Text("Congrats on finishing up your Focus session!")
+              Text("Congrats on finishing your Focus session!")
                 .fixedSize(horizontal: false, vertical: true)
                 .modifier(MediumTitle(textColor: Color.focusBlack))
                 .padding(.vertical)
               
               Text("Amount of focused time")
                 .modifier(BodyText(textColor: Color.focusBlack))
-              Text("01:20:00")
+              Text(focusSession.getTotalTime(timerDuration: focusSession.totalFocusTime))
                 .modifier(MediumTitle(textColor: Color.focusBlack))
                 .padding(.bottom)
               
               Text("Amount of break time")
                 .modifier(BodyText(textColor: Color.focusBlack))
-              Text("00:15:00")
+              Text(focusSession.getTotalTime(timerDuration: focusSession.totalBreakTime))
                 .modifier(MediumTitle(textColor: Color.focusBlack))
                 .padding(.bottom)
               
               Text("Times you got distracted")
                 .modifier(BodyText(textColor: Color.focusBlack))
-              Text("8")
+              Text("\(focusSession.distractionTotal)")
                 .modifier(MediumTitle(textColor: Color.focusBlack))
             }
             Spacer()
@@ -66,8 +66,8 @@ struct FocusSessionSummaryView: View {
 }
 
 
-struct FocusSessionSummaryView_Previews: PreviewProvider {
-  static var previews: some View {
-    FocusSessionSummaryView()
-  }
-}
+//struct FocusSessionSummaryView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    FocusSessionSummaryView()
+//  }
+//}

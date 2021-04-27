@@ -15,7 +15,7 @@ struct FocusSessionView: View {
     var body: some View {
       // If the focus session has ended, show the summary view
       if focusSession.sessionEnded {
-        FocusSessionSummaryView()
+        FocusSessionSummaryView(focusSession: focusSession)
       } else {
         // Otherwise show the focus timer
         VStack {
@@ -44,7 +44,7 @@ struct FocusSessionView: View {
             if focusSession.focusTime {
               // Show the distraction counter button
               Button(action: { focusSession.distractionCounted() }) {
-                Text( focusSession.distractionButtonText )
+                Text(focusSession.isDistracted ? "+1" : "I got distracted")
               }.buttonStyle(UnfilledButtonStyle(background: focusSession.setFocusBackgroundColor(), textColor: focusSession.invertColors()))
               
               // Show the focus timer button

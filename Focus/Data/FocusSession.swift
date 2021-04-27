@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import AVFoundation
 
-class FocusSession: ObservableObject {
+class FocusSession : ObservableObject {
   
   // Session properties
   @Published var focusTaskName: String = ""
@@ -21,17 +22,20 @@ class FocusSession: ObservableObject {
   
   // Break properties
   @Published var breakDurationIndex: Int = 0
-  var currentBreak: Int = 1
   @Published var breakText = "Take a break"
+  var currentBreak: Int = 1
   //  @Published var breakFrequencyIndex: Int = 0
   
   //Timer
-  var focusTimer = Timer()
-  var breakTimer = Timer()
   @Published var timerActive = false
   @Published var focusTimerDuration = 0
+  @Published var totalFocusTime = 0
   @Published var breakTimerDuration = 0
+  @Published var totalBreakTime = 0
   @Published var focusTime = true
+  var focusTimer = Timer()
+  var breakTimer = Timer()
+  var audioPlayer : AVAudioPlayer?
   
   let focusDurations = [1, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
   let breakDurations = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -40,11 +44,16 @@ class FocusSession: ObservableObject {
   //Distractions
   @Published var distractionTotal = 0
   @Published var isDistracted = false
-  @Published var distractionButtonText = "I got distracted"
   
   //Count distraction
   func distractionCounted() {
-    distractionTotal += 1
+    if timerActive {
+      distractionTotal += 1
+      self.isDistracted = true
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        self.isDistracted = false
+      }
+    }
   }
   
   //Start a session
@@ -76,6 +85,7 @@ class FocusSession: ObservableObject {
         // For each second
         // Remove 1 from duration
         self.focusTimerDuration -= 1
+        self.totalFocusTime += 1
         if self.focusTimerDuration == 0 { self.stopFocusTimer() }
       }
      } else {
@@ -84,8 +94,9 @@ class FocusSession: ObservableObject {
         // For each second
         // Remove 1 from duration
         self.breakTimerDuration -= 1
+        self.totalBreakTime += 1
         if self.breakTimerDuration == 0 { self.stopBreakTimer() }
-     }
+        }
      }
   }
   
@@ -95,6 +106,15 @@ class FocusSession: ObservableObject {
     let minutes = timerDuration / 60 % 60
     let seconds = timerDuration % 60
     return String(format:"%02i:%02i", minutes, seconds)
+  }
+  
+  // Seconds to duration
+  
+  func getTotalTime(timerDuration: Int) -> String {
+    let hours = timerDuration / 3600
+    let minutes = timerDuration / 60 % 60
+    let seconds = timerDuration % 60
+    return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
   }
   
   //Pause the timer
@@ -111,11 +131,11 @@ class FocusSession: ObservableObject {
   
   //Stop the timer
   func stopFocusTimer() {
+    playSound(sound: "timer-done", type:"wav")
     timerActive = false
     focusTimer.invalidate()
     focusTimerDuration = 0
     if currentSession < Int(numberOfSessions) {
-      print("increase focus session")
       currentSession += 1
       setBreakTimer()
       focusTime = false
@@ -125,11 +145,11 @@ class FocusSession: ObservableObject {
   }
   
   func stopBreakTimer() {
+    playSound(sound: "timer-done", type:"wav")
     timerActive = false
-    focusTimer.invalidate()
+    breakTimer.invalidate()
     breakTimerDuration = 0
     if currentBreak < numberOfBreaks {
-      print("increase break session")
       currentBreak += 1
       setFocusTimer()
       focusTime = true
@@ -141,6 +161,20 @@ class FocusSession: ObservableObject {
     focusTime = true
     setFocusTimer()
   }
+  
+  // Play sound
+  
+  func playSound(sound: String, type: String) {
+    if let path = Bundle.main.path(forResource: sound, ofType: type) {
+      do {
+        audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+        audioPlayer?.play()
+      } catch {
+        print("Sound error")
+      }
+    }
+  }
+  
   
   // MARK: - Colour Scheme settings
   
