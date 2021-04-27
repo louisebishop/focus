@@ -16,6 +16,7 @@ struct OnboardingNavigationView: View {
       OnboardingView()
     } else {
       ContentView().environmentObject(NavigationHelper())
+//      AnimationPractice()
     }
   }
   
