@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "tomato-background.png",
+      "filename" : "smallTomato.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Group 26@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Group 26@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

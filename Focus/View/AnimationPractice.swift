@@ -13,7 +13,7 @@ struct AnimationPractice: View {
   @State var scale: CGFloat = 1
   
   var animation: Animation {
-    Animation.linear(duration: 40)
+    Animation.linear(duration: 10)
       .repeatForever(autoreverses: false)
   }
   
@@ -28,7 +28,7 @@ struct AnimationPractice: View {
 //               .aspectRatio(contentMode: .fit)
                 .frame(width: 900, height: 1000)
 //                .offset(x: -40, y: -140)
-                .animation(animation)
+//                .animation(animation)
 
               Image("tomato-background-two")
                 .resizable()
@@ -36,15 +36,16 @@ struct AnimationPractice: View {
 //                .frame(width: geo.size.width)
                 .frame(width: 400, height: 400)
 //                .offset(x: -80, y: -150)
-                .animation(animation)
+//                .animation(animation)
 //
               Image("tomato-seeds")
                 .resizable()
-                .frame(width: 2000, height: 2000)
-                .rotationEffect(Angle.degrees(isAnimating ? 90 : 0), anchor: UnitPoint(x: 0.5, y: 0.5))
+                .frame(width: 400, height: 400)
+                .rotationEffect(Angle.degrees(isAnimating ? 180 : 0), anchor: UnitPoint(x: 0.5, y: 0.5))
+                .offset(x: -7000.0)
                 .animation(animation)
-                .offset(x: -100.0)
-              
+            
+//
 //
 //              Image("tomato-seeds")
 //                .resizable()

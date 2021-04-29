@@ -10,21 +10,41 @@ import SwiftUI
 struct FocusSessionSummaryView: View {
   @EnvironmentObject var navigationHelper: NavigationHelper
   @ObservedObject var focusSession: FocusSession
+  @State private var isAnimating = false
+  
+  var animation: Animation {
+    Animation.linear(duration: 240)
+      .repeatForever(autoreverses: false)
+  }
+  
   
   var body: some View {
  
       ZStack(alignment: .bottom) {
+
         Image("summary-tomato")
           .resizable()
           .frame(height: 300)
+        
+        GeometryReader { geo in
+          
+          Image("tomato-seeds-flipped")
+            .resizable()
+            .frame(width: 889, height: 1013)
+            .rotationEffect(Angle.degrees(isAnimating ? 360 : 0), anchor: UnitPoint(x: 0.5, y: 0.5))
+            .animation(animation)
+            .offset(x: -90, y: 580)
+            .onAppear {
+              self.isAnimating = true
+            }
+        }
+      
         VStack {
-          Spacer()
           FocusTitleView(textColor: Color.focusBlack, image: "focused-tomato")
-//            .frame(width:200, height:100)
             .padding(.top, 40)
           VStack(alignment: .leading) {
             Group {
-              Text("Congrats on finishing your Focus session!")
+              Text("Congratulations on finishing your Focus session!")
                 .fixedSize(horizontal: false, vertical: true)
                 .modifier(MediumTitle(textColor: Color.focusBlack))
                 .padding(.vertical)
@@ -46,18 +66,19 @@ struct FocusSessionSummaryView: View {
               Text("\(focusSession.distractionTotal)")
                 .modifier(MediumTitle(textColor: Color.focusBlack))
             }
+            
             Spacer()
             Button(action: {
               navigationHelper.selection = nil
             }) {
               Text("Create a new focus")
-            }.buttonStyle(FilledButtonStyle(background: .focusBlack, textColor: Color.focusWhite))
-          }
-          .padding(.horizontal)
-          .padding(.vertical, 40)
+            }
+            .buttonStyle(FilledButtonStyle(background: .focusBlack, textColor: Color.focusWhite))
+            .padding(.bottom, 40)
+          }.padding(.top, 40)
+        }.padding()
+          
         }
-        
-    }
     .ignoresSafeArea()
     .navigationBarTitle("", displayMode: .inline)
     .navigationBarBackButtonHidden(true)

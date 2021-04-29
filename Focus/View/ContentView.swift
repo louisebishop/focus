@@ -9,16 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
   @EnvironmentObject var navigationHelper: NavigationHelper
+  @State private var isAnimating = false
+  
+  var animation: Animation {
+    Animation.linear(duration: 240)
+      .repeatForever(autoreverses: false)
+  }
   
   var body: some View {
     
     NavigationView {
       VStack {
         GeometryReader { geo in
+       
           Image("background-tomato")
             .resizable()
             .aspectRatio(contentMode: .fill)
+            .offset(y: -100)
             .frame(width: geo.size.width)
+          
+          Image("tomato-seeds")
+            .resizable()
+            .frame(width: 889, height: 1013)
+            .rotationEffect(Angle.degrees(isAnimating ? 360 : 0), anchor: UnitPoint(x: 0.5, y: 0.5))
+            .animation(animation)
+            .offset(x: -410, y: -400)
+            .onAppear {
+              self.isAnimating = true
+            }
+          
         }
         Text("Focus")
           .modifier(LargeTitle(textColor: Color.focusBlack))
