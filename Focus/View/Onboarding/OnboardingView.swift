@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct OnboardingView: View {
+  
   @AppStorage("isOnboarding") var isOnboarding: Bool = true
   @State private var onboardingTabSelection = 0
-  var data = OnboardingDataModel.data
+  var data = OnboardingStep.data
   
   init() {
     UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.cherryRed)
@@ -21,7 +22,7 @@ struct OnboardingView: View {
         ZStack(alignment: .bottom) {
           TabView(selection: $onboardingTabSelection) {
             ForEach(0..<data.count, id: \.self) { index in
-              OnboardingStepView(data: data[index])
+              OnboardingStepView(step: data[index])
                 .tag(index)
             }
         }

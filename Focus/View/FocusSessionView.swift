@@ -73,7 +73,6 @@ struct FocusSessionView: View {
           }.padding(.bottom, 40)
         }
         .padding()
-//        .foregroundColor(focusSession.invertColors())
         .background(focusSession.setFocusBackgroundColor())
         .modifier(PausedModifier(focusSession: focusSession))
         .navigationBarBackButtonHidden(true)

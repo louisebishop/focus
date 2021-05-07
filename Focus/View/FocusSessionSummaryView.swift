@@ -12,12 +12,6 @@ struct FocusSessionSummaryView: View {
   @ObservedObject var focusSession: FocusSession
   @State private var isAnimating = false
   
-  var animation: Animation {
-    Animation.linear(duration: 240)
-      .repeatForever(autoreverses: false)
-  }
-  
-  
   var body: some View {
  
       ZStack(alignment: .bottom) {
@@ -25,19 +19,18 @@ struct FocusSessionSummaryView: View {
         Image("summary-tomato")
           .resizable()
           .frame(height: 300)
-        
-        GeometryReader { geo in
           
           Image("tomato-seeds-flipped")
             .resizable()
             .frame(width: 889, height: 1013)
             .rotationEffect(Angle.degrees(isAnimating ? 360 : 0), anchor: UnitPoint(x: 0.5, y: 0.5))
-            .animation(animation)
-            .offset(x: -90, y: 580)
+            .position(x: 310, y: 1080)
             .onAppear {
-              self.isAnimating = true
+              withAnimation(.linear(duration: 240).repeatForever(autoreverses: false)) {
+                self.isAnimating = true
+              }
             }
-        }
+
       
         VStack {
           FocusTitleView(textColor: Color.focusBlack, image: "focused-tomato")
@@ -87,8 +80,8 @@ struct FocusSessionSummaryView: View {
 }
 
 
-//struct FocusSessionSummaryView_Previews: PreviewProvider {
-//  static var previews: some View {
-//    FocusSessionSummaryView()
-//  }
-//}
+struct FocusSessionSummaryView_Previews: PreviewProvider {
+  static var previews: some View {
+    FocusSessionSummaryView(focusSession: FocusSession())
+  }
+}

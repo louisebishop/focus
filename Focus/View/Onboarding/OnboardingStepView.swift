@@ -9,22 +9,22 @@ import SwiftUI
 
 struct OnboardingStepView: View {
   
-    var data: OnboardingDataModel
+    var step: OnboardingStep
     var body: some View {
       
       VStack {
         
         VStack {
-          Image(data.image)
+          Image(step.image)
             .padding(.vertical, 20)
             .frame(width: 300, height: 300, alignment: .center)
         }
       
         VStack(alignment: .leading) {
-              Text(data.heading)
+              Text(step.heading)
                 .font(Font.custom("Archivo-SemiBold", size: 34, relativeTo: .largeTitle))
                   .padding(.bottom, 20)
-              Text(data.text)
+              Text(step.text)
                 .font(Font.custom("Archivo-SemiBold", size: 18, relativeTo: .body))
                 
         }
@@ -36,9 +36,9 @@ struct OnboardingStepView: View {
 }
 
 struct OnboardingStepView_Previews: PreviewProvider {
-    static var data = OnboardingDataModel.data[1]
+    static var step = OnboardingStep.data[1]
     static var previews: some View {
-      OnboardingStepView(data: data)
+      OnboardingStepView(step: step)
             .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
             .previewDisplayName("iPhone 12")
 

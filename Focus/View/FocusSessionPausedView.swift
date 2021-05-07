@@ -41,7 +41,7 @@ struct PausedModifier: ViewModifier {
   func body(content: Content) -> some View {
     // overlay the following
     content.overlay(
-      VStack {               // << holder container needed to make animation work !!
+      VStack { // << holder container needed to make animation work !!
         // if timer is paused
         if focusSession.showPausedState {
           // create a vstack
@@ -57,14 +57,6 @@ struct PausedModifier: ViewModifier {
               focusSession.showPausedState = false
             }
           }
-//          .gesture(
-//            DragGesture()
-//              .onChanged { _ in
-//                withAnimation {
-//                  showPausedState = false
-//                }
-//              }
-//          )
         }
       }
       .animation(.easeInOut)         // << here !!
@@ -72,19 +64,6 @@ struct PausedModifier: ViewModifier {
   }
 }
 
-
-//struct TestBannerModifier: View {
-//  @State var showPausedState : Bool
-//  var body: some View {
-//    VStack {
-//      Button("Test") { showPausedState = true }
-//      Button("Reset") { showPausedState = false }
-//    }
-//    .frame(maxWidth: .infinity, maxHeight: .infinity)
-//    .modifier(MenuModifier(showPausedState: $showPausedState))
-//  }
-//}
-//
 //struct TestAnimation_Previews: PreviewProvider {
 //    static var previews: some View {
 //      TestBannerModifier(showPausedState: true)
